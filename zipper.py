@@ -32,4 +32,7 @@ for root, dirs, files in os.walk(".", topdown=False):
 		shutil.copytree(os.path.join(root,current_dir),os.path.join(dir_working,dir_staging,student,course))
 
 #now make the archive
+os.chdir(dir_working)
 shutil.make_archive(course, 'gztar', dir_working)
+#now delete the folder
+shutil.rmtree(course)
