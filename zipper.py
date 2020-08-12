@@ -11,7 +11,7 @@ course = 'ES103'
 dir_working = os.getcwd()
 
 #directory to hold ALL files before tar
-dir_staging = course+'_tar'
+dir_staging = course
 
 #create that directory
 if not os.path.exists(dir_staging):
@@ -30,3 +30,6 @@ for root, dirs, files in os.walk(".", topdown=False):
             if (student==current_dir and root=='.'):
                 print("Found student directory: "+os.path.join(root,current_dir))
 		shutil.copytree(os.path.join(root,current_dir),os.path.join(dir_working,dir_staging,student,course))
+
+#now make the archive
+shutil.make_archive(course, 'gztar', dir_working)
